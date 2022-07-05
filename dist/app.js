@@ -2,7 +2,7 @@
 const input = document.querySelector(".add_task_input");
 const button = document.querySelector(".button_add");
 const result = document.querySelector(".wrapper_task");
-let c = document.querySelector(".header_span2");
+let counterHeader = document.querySelector(".header_span2");
 let filter = document.querySelector(".filter");
 var memberFilter;
 (function (memberFilter) {
@@ -18,17 +18,14 @@ let state = {
 button === null || button === void 0 ? void 0 : button.addEventListener("click", () => {
     state.massiv.push({ id: Math.random(), name: input.value, checked: false });
     drawTasks();
-    console.log(state.massiv);
     input.value = "";
+    let counter = state.count++;
+    counterHeader.innerHTML;
 });
 result.addEventListener("click", (event) => {
-    let remove = document.querySelectorAll(".add_task_result");
     const idButton = event.target;
     let getIdButton = idButton.getAttribute("id");
-    remove.forEach((item) => {
-        if (item.id === getIdButton) {
-        }
-    });
+    remove(getIdButton);
 });
 function drawTasks() {
     let drawTask = "";
@@ -42,4 +39,13 @@ function drawTasks() {
    </div>`;
     });
     result.innerHTML = drawTask;
+}
+function remove(getIdButton) {
+    let remove = document.querySelectorAll(".add_task_result");
+    remove.forEach((item, index) => {
+        if (item.id === getIdButton) {
+            state.massiv.splice(index, 1);
+            item.remove();
+        }
+    });
 }

@@ -2,7 +2,7 @@ const input = <HTMLInputElement>document.querySelector(".add_task_input")!;
 const button = document.querySelector(".button_add")!;
 const result = <HTMLInputElement>document.querySelector(".wrapper_task")!;
 
-let c = document.querySelector(".header_span2")!;
+let counterHeader = document.querySelector(".header_span2")!;
 let filter = document.querySelector(".filter")!;
 
 enum memberFilter {
@@ -29,17 +29,14 @@ let state: STATE = {
 button?.addEventListener("click", () => {
   state.massiv.push({ id: Math.random(), name: input.value, checked: false });
   drawTasks();
-  console.log(state.massiv);
   input.value = "";
+  let counter = state.count++;
+  counterHeader.innerHTML;
 });
 result.addEventListener("click", (event: MouseEvent) => {
-  let remove = document.querySelectorAll(".add_task_result")!;
   const idButton = event.target as HTMLInputElement;
   let getIdButton = idButton.getAttribute("id");
-  remove.forEach((item) => {
-    if (item.id === getIdButton) {
-    }
-  });
+  remove(getIdButton);
 });
 
 function drawTasks() {
@@ -58,4 +55,13 @@ function drawTasks() {
    </div>`;
   });
   result.innerHTML = drawTask;
+}
+function remove(getIdButton: string | null) {
+  let remove = document.querySelectorAll(".add_task_result")!;
+  remove.forEach((item, index) => {
+    if (item.id === getIdButton) {
+      state.massiv.splice(index, 1);
+      item.remove();
+    }
+  });
 }
