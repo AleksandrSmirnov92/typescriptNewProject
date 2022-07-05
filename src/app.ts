@@ -30,12 +30,14 @@ button?.addEventListener("click", () => {
   state.massiv.push({ id: Math.random(), name: input.value, checked: false });
   drawTasks();
   input.value = "";
-  let counter = state.count++;
-  counterHeader.innerHTML;
+  let counter = "";
+  state.count++;
+  counter += state.count;
+  counterHeader.innerHTML = counter;
 });
 result.addEventListener("click", (event: MouseEvent) => {
   const idButton = event.target as HTMLInputElement;
-  let getIdButton = idButton.getAttribute("id");
+  let getIdButton: string = idButton.getAttribute("id")!;
   remove(getIdButton);
 });
 
@@ -56,7 +58,7 @@ function drawTasks() {
   });
   result.innerHTML = drawTask;
 }
-function remove(getIdButton: string | null) {
+function remove(getIdButton: string) {
   let remove = document.querySelectorAll(".add_task_result")!;
   remove.forEach((item, index) => {
     if (item.id === getIdButton) {

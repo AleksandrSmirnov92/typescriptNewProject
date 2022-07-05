@@ -19,8 +19,10 @@ button === null || button === void 0 ? void 0 : button.addEventListener("click",
     state.massiv.push({ id: Math.random(), name: input.value, checked: false });
     drawTasks();
     input.value = "";
-    let counter = state.count++;
-    counterHeader.innerHTML;
+    let counter = "";
+    state.count++;
+    counter += state.count;
+    counterHeader.innerHTML = counter;
 });
 result.addEventListener("click", (event) => {
     const idButton = event.target;
