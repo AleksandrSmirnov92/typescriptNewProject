@@ -1,0 +1,21 @@
+{
+  "name": "typescripttodo",
+  "version": "1.0.0",
+  "description": "todo_list_type_script",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "keywords": [
+    "js",
+    "ts",
+    "html",
+    "css"
+  ],
+  "author": "Smirnov Aleksandr",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
