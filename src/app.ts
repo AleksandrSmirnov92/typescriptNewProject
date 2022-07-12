@@ -1,9 +1,8 @@
-const input = <HTMLInputElement>document.querySelector(".add_task_input")!;
+const input = document.querySelector(".add_task_input")! as HTMLInputElement;
 const button = document.querySelector(".button_add")!;
-const result = <HTMLInputElement>document.querySelector(".wrapper_task")!;
-let counterHeader = document.querySelector(".header_span2")!;
-let selectElement = document.querySelector(".select")!;
-
+const result = document.querySelector(".wrapper_task")! as HTMLInputElement;
+const counterHeader = document.querySelector(".header_span2")!;
+const selectElement = document.querySelector(".select")!;
 enum memberFilter {
   ALL = "all",
   ALL_ACTIVE = "all-active",
@@ -25,7 +24,7 @@ let state: STATE = {
   filterValue: memberFilter.ALL,
 };
 
-button?.addEventListener("click", () => {
+button.addEventListener("click", () => {
   state.massiv.push({
     id: `id_${Math.random().toString()}`,
     name: input.value,

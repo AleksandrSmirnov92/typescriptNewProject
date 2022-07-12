@@ -2,8 +2,8 @@
 const input = document.querySelector(".add_task_input");
 const button = document.querySelector(".button_add");
 const result = document.querySelector(".wrapper_task");
-let counterHeader = document.querySelector(".header_span2");
-let selectElement = document.querySelector(".select");
+const counterHeader = document.querySelector(".header_span2");
+const selectElement = document.querySelector(".select");
 var memberFilter;
 (function (memberFilter) {
     memberFilter["ALL"] = "all";
@@ -13,7 +13,7 @@ var memberFilter;
 let state = {
     massiv: [],
     count: 0,
-    filterValue: null,
+    filterValue: memberFilter.ALL,
 };
 button === null || button === void 0 ? void 0 : button.addEventListener("click", () => {
     state.massiv.push({
@@ -119,13 +119,13 @@ function drawCounter(count) {
 }
 function changeFilter() {
     let c = document.querySelectorAll(".add_task_result");
-    if (state.filterValue === "all") {
+    if (state.filterValue === memberFilter.ALL) {
         state.massiv.forEach((item, index) => {
             c[index].classList.remove("add_task_input2");
         });
         // console.log("выбраны все ");
     }
-    if (state.filterValue === "all-active") {
+    if (state.filterValue === memberFilter.ALL_ACTIVE) {
         state.massiv.forEach((item, index) => {
             if (item.checked === true) {
                 c[index].classList.add("add_task_input2");
@@ -136,7 +136,7 @@ function changeFilter() {
         });
         // console.log("выбраны активные");
     }
-    if (state.filterValue === "all-inactive") {
+    if (state.filterValue === memberFilter.ALL_INACTIVE) {
         state.massiv.forEach((item, index) => {
             if (!item.checked) {
                 c[index].classList.add("add_task_input2");
